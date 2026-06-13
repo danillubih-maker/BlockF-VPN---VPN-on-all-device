@@ -1,6 +1,6 @@
-# 🚀 Universal Auto-Proxy on all devices (Block Fun Net v1.0)
+# 🚀 Universal Standalone Proxy Extension (Block Fun Net v1.0)
 
-A lightweight, invisible Proxy Auto-Config (PAC) script optimized for Plesk Obsidian [155-2, 2026-14]. It automatically unblocks Discord, WhatsApp, Telegram, Instagram, YouTube, Roblox, Roblox Studio, and Facebook natively [2026-1]. No apps, no buttons, no search bars — just continuous high-speed internet [2026-1].
+An invisible, standalone Proxy Auto-Config (PAC) Chrome extension designed to bypass network restrictions natively in browser memory, requiring NO external servers or Plesk hosting [155-2, 2026-14]. Natively unblocks Discord, WhatsApp, Telegram, Instagram, YouTube, Roblox, Roblox Studio, and Facebook [2026-1].
 
 ## 🛰️ Supported Platforms & Devices
 
@@ -33,6 +33,3 @@ A lightweight, invisible Proxy Auto-Config (PAC) script optimized for Plesk Obsi
 ### 🛡️ FULL COMPATIBILITY MATRIX
 SUPPORTED ABSOLUTELY ALL VERSIONS OF ABSOLUTELY ANY OPERATING SYSTEMS. 
 COMPATIBLE WITH ABSOLUTELY ALL VERSIONS OF ABSOLUTELY ALL OPERATING SYSTEMS WORLDWIDE.
-
-## ⚙️ Invisible System Integration
-To activate, simply open your device's Network/Wi-Fi settings, select "Auto-Proxy Configuration (PAC / URL)",

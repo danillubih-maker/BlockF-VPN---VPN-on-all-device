@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Block Fun Net VPN",
+  "version": "1.0",
+  "description": "Invisible standalone auto-proxy for all major apps without external servers.",
+  "permissions": [
+    "proxy",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
