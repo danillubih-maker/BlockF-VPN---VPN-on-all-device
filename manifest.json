@@ -1,13 +1,12 @@
 {
   "manifest_version": 3,
   "name": "Block Fun Net VPN",
-  "version": "4.1",
-  "description": "Global standalone VPN with persistent memory and buttons for Chrome OS Flex.",
+  "version": "5.1",
+  "description": "Stable proxy extension for Chrome OS Flex with memory controls.",
   "permissions": [
     "proxy",
     "storage",
-    "declarativeNetRequest",
-    "vpnProvider"
+    "declarativeNetRequest"
   ],
   "host_permissions": [
     "<all_urls>"
