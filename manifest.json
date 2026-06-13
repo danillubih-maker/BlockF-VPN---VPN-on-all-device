@@ -1,12 +1,15 @@
 {
   "manifest_version": 3,
   "name": "Block Fun Net VPN",
-  "version": "1.0",
-  "description": "Invisible standalone auto-proxy for all major apps without external servers.",
+  "version": "1.1",
+  "description": "Persistent background auto-proxy for Chrome OS Flex.",
   "permissions": [
     "proxy",
     "storage"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
     "default_popup": "popup.html"
   }
