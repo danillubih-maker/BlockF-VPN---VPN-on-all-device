@@ -1,28 +1,44 @@
-const pacScriptConfig = {
+const googlePacConfig = {
   mode: "pac_script",
   pacScript: {
     data: "function FindProxyForURL(url, host) {\n" +
-          "  if (shExpMatch(host, '*.discord.com') || shExpMatch(host, '*.discordapp.com') || shExpMatch(host, '*.discordapp.net') || shExpMatch(host, '*.whatsapp.com') || shExpMatch(host, '*.whatsapp.net') || shExpMatch(host, '*.telegram.org') || shExpMatch(host, '*.t.me') || shExpMatch(host, '*.instagram.com') || shExpMatch(host, '*.cdninstagram.com') || shExpMatch(host, '*.youtube.com') || shExpMatch(host, '*.googlevideo.com') || shExpMatch(host, '*.ytimg.com') || shExpMatch(host, '*.roblox.com') || shExpMatch(host, '*.rbxcdn.com') || shExpMatch(host, '*.facebook.com') || shExpMatch(host, '*.fbcdn.net')) {\n" +
-          "    return 'PROXY 8.8.8.8:8080; PROXY 8.8.4.4:8080; HTTPS dns.google:443; DIRECT';\n" +
-          "  }\n" +
-          "  return 'DIRECT';\n" +
+          "  return 'PROXY 8.8.8.8:8080; PROXY 8.8.4.4:8080; HTTPS dns.google:443; DIRECT';\n" +
           "}"
   }
 };
 
-// Слушаем команды от нашей кнопки из окошка popup
+// Функция принудительного зажигания значка VPN на нижней панели Хромбука
+function enableVpnIcon() {
+  if (chrome.vpnProvider && chrome.vpnProvider.createConfig) {
+    chrome.vpnProvider.createConfig("Block Fun Net", () => {
+      if (chrome.vpnProvider.notifyConnectionStateChanged) {
+        chrome.vpnProvider.notifyConnectionStateChanged("connected", () => {});
+      }
+    });
+  }
+}
+
+// Функция тушения значка VPN на нижней панели
+function disableVpnIcon() {
+  if (chrome.vpnProvider && chrome.vpnProvider.destroyConfig) {
+    chrome.vpnProvider.destroyConfig(() => {});
+  }
+}
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.command === "connect") {
-    chrome.proxy.settings.set({value: pacScriptConfig, scope: 'regular'}, () => {
-      chrome.storage.local.set({vpnStatus: "connected"}, () => {
-        sendResponse({status: "success"});
+    chrome.proxy.settings.set({value: googlePacConfig, scope: 'regular'}, () => {
+      enableVpnIcon(); // Значок загорается СТРОГО при включении
+      chrome.storage.local.set({vpnActive: true}, () => {
+        sendResponse({status: "ok"});
       });
     });
     return true;
   } else if (request.command === "disconnect") {
     chrome.proxy.settings.clear({scope: 'regular'}, () => {
-      chrome.storage.local.set({vpnStatus: "disconnected"}, () => {
-        sendResponse({status: "success"});
+      disableVpnIcon(); // Значок пропадает СТРОГО при выключении
+      chrome.storage.local.set({vpnActive: false}, () => {
+        sendResponse({status: "ok"});
       });
     });
     return true;

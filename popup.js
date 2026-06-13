@@ -1,31 +1,31 @@
-// При открытии окошка сразу проверяем, был ли включен ВПН ранее
-chrome.storage.local.get(['vpnStatus'], (result) => {
-  if (result.vpnStatus === "connected") {
+const connectBtn = document.getElementById('connectBtn');
+const statusText = document.getElementById('status');
+
+// Железная проверка статуса при повторном открытии расширения
+chrome.storage.local.get(['vpnActive'], (data) => {
+  if (data.vpnActive === true) {
     setUIConnected();
   } else {
     setUIDisconnected();
   }
 });
 
-const connectBtn = document.getElementById('connectBtn');
-const statusText = document.getElementById('status');
-
 connectBtn.addEventListener('click', () => {
-  chrome.storage.local.get(['vpnStatus'], (result) => {
-    if (result.vpnStatus !== "connected") {
-      chrome.runtime.sendMessage({command: "connect"}, (response) => {
-        if (response && response.status === "success") setUIConnected();
+  chrome.storage.local.get(['vpnActive'], (data) => {
+    if (!data.vpnActive) {
+      chrome.runtime.sendMessage({command: "connect"}, () => {
+        setUIConnected();
       });
     } else {
-      chrome.runtime.sendMessage({command: "disconnect"}, (response) => {
-        if (response && response.status === "success") setUIDisconnected();
+      chrome.runtime.sendMessage({command: "disconnect"}, () => {
+        setUIDisconnected();
       });
     }
   });
 });
 
 function setUIConnected() {
-  statusText.innerText = "STATUS: CONNECTED";
+  statusText.innerText = "STATUS: GLOBAL CONNECTED";
   statusText.style.color = "#00ffff";
   connectBtn.innerText = "DISCONNECT";
   connectBtn.style.background = "#ff3333";
