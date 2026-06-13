@@ -5,7 +5,7 @@
     "action": { "type": "allow" },
     "condition": {
       "urlFilter": "*",
-      "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "imageset", "media", "font", "object", "xmlhttprequest", "ping", "csp_report", "websocket", "other"]
+      "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "media", "font", "object", "xmlhttprequest", "ping", "csp_report", "websocket", "other"]
     }
   }
 ]
