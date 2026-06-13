@@ -5,7 +5,7 @@ An invisible, standalone Proxy Auto-Config (PAC) Chrome extension designed to by
 ## 🛰️ Supported Platforms & Devices
 
 ### 1. Android
-* **Devices:** Tablets (including Honor), Laptops, Smartphones, Smartwatches, Smart Glasses, AR/VR Headsets (VR glasses & XR glasses), and Smart Monitors [2026-1].
+* **Devices:** Tablets, Laptops, Smartphones, Smartwatches, Smart Glasses, AR/VR Headsets (VR glasses & XR glasses), and Smart Monitors [2026-1].
 
 ### 2. Smart TV & Media Platforms
 * **Platforms:** Android TV, Google TV, tizen, smart tv, yatvos, yaos (tablet edition), sbertvos, and all universal television streaming boxes.
